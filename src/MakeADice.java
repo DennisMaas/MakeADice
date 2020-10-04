@@ -14,22 +14,16 @@ public class MakeADice {
     public static void main(String[] args) {
         int max = 6;
         int min = 1;
+        int rollsExpected = 6000;
+        int countSixes = 0;
+        int numberToGet = 6;
         int range = max - min + 1;
         //Math.random returns a double between 0.0 and <1.0
-        int number = (int) (Math.random() * range) + min;
-        switch (number) {
-            case 3:
-                System.out.println("Gewonnen, du hast eine 3 gewürfelt.");
-                break;
-            case 4:
-            case 5:
-            case 6:
-                System.out.println("Du hast eine " + number + " gewürfelt und darfst es noch einmal versuchen.");
-                break;
-            default:
-                System.out.println("Leider verloren, du hast eine " + number + " gewürfelt.");
-
+        for (int i = 0; i < rollsExpected ; i++) {
+            int number = (int) (Math.random() * range) + min;
+            if (number == 6) countSixes++;
         }
+        System.out.println("In " + rollsExpected + " Würfen wurde " + countSixes + " mal die " + numberToGet + " gewürfelt.");
 
     }
 }
